@@ -17,6 +17,15 @@ return {
     opts = {
       formatters_by_ft = {
         kotlin = { "ktlint" },
+        java = { "google-java-format" },
+        python = { "black" },
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        javascriptreact = { "prettier" },
+        typescriptreact = { "prettier" },
+        json = { "prettier" },
+        css = { "prettier" },
+        html = { "prettier" },
       },
       format_on_save = {
         timeout_ms = 3000,
@@ -34,6 +43,11 @@ return {
 
       lint.linters_by_ft = {
         kotlin = { "ktlint" },
+        python = { "ruff" },
+        javascript = { "eslint_d" },
+        typescript = { "eslint_d" },
+        javascriptreact = { "eslint_d" },
+        typescriptreact = { "eslint_d" },
       }
 
       -- Create autocommand for linting

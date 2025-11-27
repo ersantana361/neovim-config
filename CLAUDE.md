@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-This is a modular Neovim configuration optimized for Kotlin development, using lazy.nvim as the plugin manager.
+This is a modular Neovim configuration for multi-language development (Kotlin, Java, Python, JavaScript, TypeScript), using lazy.nvim as the plugin manager.
 
 ## Architecture
 
@@ -12,9 +12,9 @@ This is a modular Neovim configuration optimized for Kotlin development, using l
 
 **Plugin pattern:** Each file in `lua/plugins/` returns a table of lazy.nvim plugin specs. Lazy.nvim auto-discovers and merges all specs via `{ import = "plugins" }`.
 
-**LSP setup:** Mason auto-installs `kotlin_language_server`. The `on_attach` function in `lua/plugins/lsp.lua` defines all LSP keybindings. To add a new language server, add it to `ensure_installed` and create a new `lspconfig.<server>.setup()` call with `capabilities` and `on_attach`.
+**LSP setup:** Mason auto-installs language servers (kotlin_language_server, jdtls, pyright, ts_ls). The `on_attach` function in `lua/plugins/lsp.lua` defines all LSP keybindings. To add a new language server, add it to `ensure_installed` and create a handler in the `handlers` table.
 
-**Formatting/Linting:** conform.nvim handles formatting, nvim-lint handles linting. Both configured in `lua/plugins/formatting.lua` with ktlint for Kotlin.
+**Formatting/Linting:** conform.nvim handles formatting, nvim-lint handles linting. Both configured in `lua/plugins/formatting.lua` with language-specific tools (ktlint, google-java-format, black, prettier, ruff, eslint_d).
 
 ## Adding a New Plugin
 

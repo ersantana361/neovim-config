@@ -6,8 +6,14 @@ return {
     main = "nvim-treesitter.configs",
     opts = {
       ensure_installed = {
+        -- Languages
         "kotlin",
         "java",
+        "python",
+        "javascript",
+        "typescript",
+        "tsx",
+        -- Config/Tooling
         "lua",
         "vim",
         "vimdoc",
@@ -18,6 +24,8 @@ return {
         "yaml",
         "json",
         "toml",
+        "html",
+        "css",
       },
       sync_install = false,
       auto_install = true,

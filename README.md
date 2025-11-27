@@ -1,16 +1,16 @@
 # Neovim Configuration
 
-A modern Neovim configuration optimized for Kotlin development.
+A modern Neovim configuration for multi-language development with support for Kotlin, Java, Python, JavaScript, and TypeScript.
 
 ## Features
 
-- **LSP Support** - Full language server integration with kotlin-language-server
+- **LSP Support** - Full language server integration for multiple languages
 - **Autocompletion** - Intelligent code completion with nvim-cmp
 - **Syntax Highlighting** - Treesitter-based highlighting
 - **Fuzzy Finding** - Telescope for files, grep, and symbols
 - **File Explorer** - Neo-tree sidebar
 - **Git Integration** - Gitsigns for hunks, blame, and diffs
-- **Linting & Formatting** - ktlint integration with format-on-save
+- **Linting & Formatting** - Language-specific linters and formatters with format-on-save
 - **Theme** - Tokyo Night colorscheme
 
 ## Requirements
@@ -19,7 +19,9 @@ A modern Neovim configuration optimized for Kotlin development.
 - Git
 - [ripgrep](https://github.com/BurntSushi/ripgrep) - for Telescope live grep
 - [A Nerd Font](https://www.nerdfonts.com/) - for icons
-- Java 11+ - for kotlin-language-server
+- Java 11+ - for Kotlin and Java language servers
+- Node.js 18+ - for TypeScript/JavaScript language server
+- Python 3.8+ - for Python language server
 
 ### Install Dependencies (Ubuntu/Debian)
 
@@ -172,13 +174,32 @@ Leader key: `<Space>`
 | [conform.nvim](https://github.com/stevearc/conform.nvim) | Formatting |
 | [nvim-lint](https://github.com/mfussenegger/nvim-lint) | Linting |
 
-## Kotlin-Specific Features
+## Language Support
 
-- **kotlin-language-server** auto-installed via Mason
+All language servers, formatters, and linters are auto-installed via Mason.
+
+### Kotlin
+- **kotlin-language-server** for LSP
 - **ktlint** for linting and formatting
-- `<leader>oi` to organize imports
-- Format on save enabled
-- 4-space indentation (Kotlin standard)
+
+### Java
+- **jdtls** (Eclipse JDT Language Server) for LSP
+- **google-java-format** for formatting
+
+### Python
+- **pyright** for LSP with type checking
+- **black** for formatting
+- **ruff** for fast linting
+
+### JavaScript/TypeScript
+- **ts_ls** (TypeScript Language Server) for LSP
+- **prettier** for formatting
+- **eslint_d** for linting
+
+### Common Features
+- `<leader>oi` to organize imports (supported languages)
+- Format on save enabled for all languages
+- 4-space indentation (configurable per filetype)
 
 ## Commands
 

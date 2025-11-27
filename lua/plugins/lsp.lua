@@ -13,7 +13,16 @@ return {
     dependencies = { "williamboman/mason.nvim" },
     opts = {
       ensure_installed = {
+        -- Kotlin
         "ktlint",
+        -- Python
+        "black",
+        "ruff",
+        -- JavaScript/TypeScript
+        "prettier",
+        "eslint_d",
+        -- Java
+        "google-java-format",
       },
       auto_update = false,
       run_on_start = true,
@@ -62,7 +71,7 @@ return {
         vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
         vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
 
-        -- Organize imports (Kotlin-specific)
+        -- Organize imports
         vim.keymap.set("n", "<leader>oi", function()
           vim.lsp.buf.code_action({
             context = { only = { "source.organizeImports" } },
@@ -73,7 +82,12 @@ return {
 
       -- Setup mason-lspconfig with handlers (compatible with Neovim 0.10)
       require("mason-lspconfig").setup({
-        ensure_installed = { "kotlin_language_server" },
+        ensure_installed = {
+          "kotlin_language_server",
+          "jdtls",           -- Java
+          "pyright",         -- Python
+          "ts_ls",           -- TypeScript/JavaScript
+        },
         handlers = {
           -- Default handler for all servers
           function(server_name)
@@ -82,7 +96,7 @@ return {
               on_attach = on_attach,
             })
           end,
-          -- Kotlin-specific configuration
+          -- Kotlin
           ["kotlin_language_server"] = function()
             lspconfig.kotlin_language_server.setup({
               capabilities = capabilities,
@@ -105,6 +119,50 @@ return {
                   },
                 },
               },
+            })
+          end,
+          -- Java
+          ["jdtls"] = function()
+            lspconfig.jdtls.setup({
+              capabilities = capabilities,
+              on_attach = on_attach,
+              root_dir = lspconfig.util.root_pattern(
+                "settings.gradle",
+                "settings.gradle.kts",
+                "build.gradle",
+                "build.gradle.kts",
+                "pom.xml",
+                ".git"
+              ),
+            })
+          end,
+          -- Python
+          ["pyright"] = function()
+            lspconfig.pyright.setup({
+              capabilities = capabilities,
+              on_attach = on_attach,
+              settings = {
+                python = {
+                  analysis = {
+                    typeCheckingMode = "basic",
+                    autoSearchPaths = true,
+                    useLibraryCodeForTypes = true,
+                  },
+                },
+              },
+            })
+          end,
+          -- TypeScript/JavaScript
+          ["ts_ls"] = function()
+            lspconfig.ts_ls.setup({
+              capabilities = capabilities,
+              on_attach = on_attach,
+              root_dir = lspconfig.util.root_pattern(
+                "package.json",
+                "tsconfig.json",
+                "jsconfig.json",
+                ".git"
+              ),
             })
           end,
         },
