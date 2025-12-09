@@ -115,6 +115,65 @@ See [Editing Guide](../tasks/editing.md) for details.
 | `Ctrl+Space` | Visual | Expand selection |
 | `Backspace` | Visual | Shrink selection |
 
+### Text Objects (mini.ai)
+
+| Key | Mode | Action |
+|-----|------|--------|
+| `daf` / `caf` / `yaf` | Normal | Delete/change/yank around function |
+| `dif` / `cif` / `yif` | Normal | Delete/change/yank inside function |
+| `dac` / `cac` / `yac` | Normal | Delete/change/yank around class |
+| `dic` / `cic` / `yic` | Normal | Delete/change/yank inside class |
+| `daa` / `caa` / `yaa` | Normal | Delete/change/yank around argument |
+| `dia` / `cia` / `yia` | Normal | Delete/change/yank inside argument |
+| `dao` / `cao` / `yao` | Normal | Delete/change/yank around block/loop |
+| `dio` / `cio` / `yio` | Normal | Delete/change/yank inside block/loop |
+| `vaf` / `vif` | Normal | Select around/inside function |
+| `vac` / `vic` | Normal | Select around/inside class |
+
+### Macros
+
+| Key | Mode | Action |
+|-----|------|--------|
+| `qa` | Normal | Start recording macro to register `a` |
+| `q` | Normal | Stop recording |
+| `@a` | Normal | Play macro from register `a` |
+| `@@` | Normal | Replay last macro |
+| `5@a` | Normal | Play macro 5 times |
+
+### Registers
+
+| Key | Mode | Action |
+|-----|------|--------|
+| `"ay` | Normal | Yank to register `a` |
+| `"ap` | Normal | Paste from register `a` |
+| `"+y` | Normal/Visual | Yank to system clipboard |
+| `"+p` | Normal | Paste from system clipboard |
+| `"0p` | Normal | Paste last yank |
+| `"_d` | Normal | Delete to black hole |
+| `:reg` | Command | View all registers |
+
+### Marks
+
+| Key | Mode | Action |
+|-----|------|--------|
+| `ma` | Normal | Set local mark `a` |
+| `mA` | Normal | Set global mark `A` |
+| `` `a `` | Normal | Jump to mark `a` (exact) |
+| `'a` | Normal | Jump to mark `a` (line) |
+| `` `. `` | Normal | Jump to last change |
+| `''` | Normal | Jump to previous position |
+| `:marks` | Command | List all marks |
+
+### Dot Repeat & Undo
+
+| Key | Mode | Action |
+|-----|------|--------|
+| `.` | Normal | Repeat last change |
+| `u` | Normal | Undo |
+| `Ctrl+r` | Normal | Redo |
+| `g-` | Normal | Older text state |
+| `g+` | Normal | Newer text state |
+
 ### Completion
 
 | Key | Mode | Action |

@@ -48,6 +48,7 @@ For usage guides, see [Task Guides](../tasks/README.md).
 | nvim-autopairs | Auto-close brackets | [tasks/editing.md](../tasks/editing.md) |
 | Comment.nvim | Toggle comments | [tasks/editing.md](../tasks/editing.md) |
 | nvim-surround | Surround text objects | [tasks/editing.md](../tasks/editing.md) |
+| mini.ai | Extended text objects (function, class, argument) | [tasks/editing.md](../tasks/editing.md) |
 | vim-illuminate | Highlight references | [tasks/navigation.md](../tasks/navigation.md) |
 
 ### UI
