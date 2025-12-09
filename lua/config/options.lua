@@ -47,3 +47,7 @@ vim.opt.undofile = true
 -- Misc
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
+
+-- Project-local config (.nvim.lua files)
+vim.opt.exrc = true
+vim.opt.secure = true
